@@ -17,8 +17,7 @@ import examples.stateful.ShoppingCart;
 // declare a dependency on the ShoppingCart sfsb
 @EJB(name="cart", beanInterface=ShoppingCart.class)
 public class ShoppingCartServlet extends HttpServlet {
-    // inject a reference to UserTransaction
-    @Resource UserTransaction tx;
+   
     
     private final String TITLE = 
         "Chapter 3: Container Managed Transaction (CMT) Example";
