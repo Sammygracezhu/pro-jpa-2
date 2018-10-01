@@ -26,7 +26,7 @@ public class EmployeeServlet extends HttpServlet {
 
     
     // inject a reference to the EmployeeService slsb
-    @EJB EmployeeService service;
+    @EJB(beanName="EmployeeServiceBean") EmployeeService service;
     
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html");
