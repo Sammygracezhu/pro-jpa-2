@@ -20,22 +20,20 @@ public class EmployeeServiceBean implements EmployeeService {
     //@Resource(mappedName="destinationQueue") Queue destinationQueue;
     //@Resource(mappedName="factory") QueueConnectionFactory factory;
 
-    public EntityManager getEntityManager() {
-        return em;
-    }
+  
 
     public Employee createEmployee(int id, String name, long salary) {
         Employee emp = new Employee(id);
         emp.setName(name);
         emp.setSalary(salary);
-        getEntityManager().persist(emp);
+        em.persist(emp);
         return emp;
     }
 
     public Employee removeEmployee(int id) {
         Employee emp = findEmployee(id);
         if (emp != null) {
-            getEntityManager().remove(emp);
+            em.remove(emp);
             return emp;
         } else return null;
 
@@ -50,11 +48,11 @@ public class EmployeeServiceBean implements EmployeeService {
     }
 
     public Employee findEmployee(int id) {
-        return getEntityManager().find(Employee.class, id);
+        return em.find(Employee.class, id);
     }
 
     public Collection<Employee> findAllEmployees() {
-        Query query = getEntityManager().createQuery("SELECT e FROM Employee e");
+        Query query = em.createQuery("SELECT e FROM Employee e");
         return (Collection<Employee>) query.getResultList();
     }
 }
